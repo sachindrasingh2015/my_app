@@ -1,0 +1,23 @@
+<table>
+    <tr>
+        <th>Product Name</th>
+        <th>Selected Quantity</th>
+        <th>Product Price</th>
+        <th>Remove Item</th>
+    </tr>
+    <tr *ngFor="let item of cartArray;let i= index">
+        <td>{{item.pName}}</td>
+        <td>{{item.cart}}</td>
+        <td>{{item.price * item.cart}}</td>
+        <td><button mat-icon-button (click)="onClickRemoveProduct(item)" *ngIf="checBoxValue == 0"><mat-icon>cancel</mat-icon></button></td>
+    </tr>
+</table>
+<div>
+    <input type="checkbox" (click)="onClickDiscount(0)" [value]="checBoxValue"> 50% Discount
+</div>
+<div *ngIf="totalPrice != 0">
+    <h3>Sub-Total Price: {{totalPrice}}</h3>
+</div>
+<div *ngIf="checBoxValue==1">
+    <button (click)="submit()" >check out</button>
+</div>
